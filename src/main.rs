@@ -12,6 +12,7 @@ fn main() -> libs::structures::models::Output{
 
     println!("DISCLAIMER: The values calculated by this program are based on the data provided by the user.");
     println!("DISCLAIMER: There might be floating point precision errors.");
+    println!("\n\n\n");
 
     println!("Data file: {}", file_path);
     println!("Hubble Constant was calculated to be: {} km/s/Mpc", libs::utils::misc_handler::format_f64(h_0));

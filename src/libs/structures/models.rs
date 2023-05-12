@@ -5,6 +5,12 @@ use serde::Serialize;
 
 #[derive(Debug, Deserialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
+/// 
+/// Members:
+/// 
+/// * `name`: String - _Name of the galaxy_.
+/// * `distance`: f64 - _Distance of the galaxy from Earth in Megaparsec(s)_.
+/// * `velocity`: f64 - _Velocity of the galaxy in Kilometre(s) per Second_.
 pub struct Galaxy{
     name: String,
     distance: f64,
@@ -65,10 +71,5 @@ impl Output{
         //! Update the values for an output object.
         self.h0 = h0.unwrap_or(0.0 as f64);
         self.age = age.unwrap_or(0.0 as f64);
-    }
-
-    pub fn terminate(&self){
-        //! Terminate the program.
-        std::process::exit(0);
     }
 }
