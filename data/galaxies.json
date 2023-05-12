@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Malin 1",
+        "distance": 3.66E+2,
+        "velocity": 24.75e+3
+    },
+    {
+        "name": "Black Eye Galaxy - NGC 4826",
+        "distance": 5.3E+0,
+        "velocity": 4.1E+2
+    },
+    {
+        "name": "Needle Galaxy - NGC 4565",
+        "distance": 1.31E+1,
+        "velocity": 1.23E+3
+    },
+    {
+        "name": "Sculptor Galaxy - NGC 253",
+        "distance": 3.5E+0,
+        "velocity": 2.43E+2
+    },
+    {
+        "name": "Tadpole Galaxy - UGC 10214",
+        "distance": 9.4E+3,
+        "velocity": 1.2264E+2
+    }
+]
