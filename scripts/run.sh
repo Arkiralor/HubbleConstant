@@ -6,11 +6,15 @@ BASEDIR="$PWD"
 
 if [[ "$arg" == "release" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
+        ## The excapr sequence are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
+        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
         _file="$BASEDIR/data/galaxies.json"
     fi
     ./target/release/hubble-constant.exe "$_file"
 elif [[ "$arg" == "debug" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
+        ## The excapr sequence are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
+        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
         _file="$BASEDIR/data/galaxies.json"
     fi
     ./target/debug/hubble-constant.exe "$_file"

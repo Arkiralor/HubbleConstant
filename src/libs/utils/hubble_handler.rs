@@ -18,10 +18,10 @@ pub fn get_h0(data: Vec<Galaxy>)->f64{
     return _sum / data.len() as f64;
 }
 
-pub fn calculate_age(h_0: f64) -> f64{
+pub fn calculate_age(h0: f64) -> f64{
     //! Calculate the age of the universe given a value for the Hubble Constant.
     //! 
     //! Derivation Link: [www.e-education.psu.edu](https://www.e-education.psu.edu/astro801/content/l10_p5.html)
-    let resolved = h_0 / KM_IN_MPC; // This is the Hubble Constant expressed in Km/s/Km i.e, Kilometres per second per Kilometre.
+    let resolved = h0 / KM_IN_MPC; // This is the Hubble Constant expressed in Km/s/Km i.e, Kilometres per second per Kilometre.
     return (1.0 / resolved) / SEC_IN_YEAR;
 }
