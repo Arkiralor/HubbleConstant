@@ -12,7 +12,7 @@ Later on, Hubble and Lemaître independenly (_there is some controversy regardin
 
 Hence, if all objects in the known universe were speeding away from each other then it was logical to conclude that at one point in time, all matter and energy were one singularity, which was calculated to be approximately _1.38x10<sup>11</sup>_ years ago.[^2]
 
-Based on further research, it was discovered that the further away two points were in the universe (_in scales that can be calculated in MegaParsecs_), the faster they were speeding away from each other. From this discovery, spawned the _Hubble–Lemaître law_.[^3]
+Based on further research, it was discovered that the further away two points were in the universe (_in scales that can be calculated in MegaParsecs_), the faster they were speeding away from each other[^3]. From this discovery, spawned the _Hubble–Lemaître law_.
 
 The _Hubble Constant_ can be defined as the rate at which the speed of separation changes as the distance between two objects increases. For any object significantly far away, it is described as
 
@@ -60,4 +60,4 @@ sh scripts/run.sh `executableType` `pathToDataFile`
 
 [^1]: https://www.e-education.psu.edu/astro801/content/l10_p3.html
 [^2]: Planck Collaboration (2020). "Planck 2018 results. VI. Cosmological parameters". Astronomy & Astrophysics. 641. page A6 (see PDF page 15, Table 2: "Age/Gyr", last column). arXiv:1807.06209. Bibcode:2020A&A...641A...6P. doi:10.1051/0004-6361/201833910. S2CID 119335614.
-[^3]: https://ui.adsabs.harvard.edu/abs/1913LowOB...2...56S/abstract
+[^3]: Slipher, Vesto (1917). "Nebulae". Proceedings of the American Philosophical Society. 56: 403–409. Bibcode:1917PAPhS..56..403S.
