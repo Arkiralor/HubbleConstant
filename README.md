@@ -20,6 +20,8 @@ The _Hubble Constant_ can be defined as the rate at which the speed of separatio
     h_0 = {v \over d}
 ```
 
+Where _v_ is the [Helio Radial velocity](https://en.wikipedia.org/wiki/Radial_velocity) of a distant galaxy denoted in _Km/s_ and _d_ is the distance of the distant galaxy from the Earth, denoted in _Mpc_.
+
 Its unit is ___Km s<sup>-1</sup> Mpc<sup>-1</sup>___ i.e, _Kilometres per Second per Megaparsec_.
 
 Further reading on the subject is recommended and [this link](https://en.wikipedia.org/wiki/Hubble%27s_law) can be used as a starting point for laypersons; the more academically inclined may refer to the [Pensylvania State University's dossier](https://www.e-education.psu.edu/astro801/content/l10_p3.html) on the subject.
