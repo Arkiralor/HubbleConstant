@@ -6,9 +6,7 @@ A binary application written in Rust to calculate the Hubble Constant and use it
 
 The Big Bang Theory, extrapolated from the works of [Edwin Powell Hubble](https://en.wikipedia.org/wiki/Edwin_Hubble) and [Georges Lemaître](https://en.wikipedia.org/wiki/Georges_Lema%C3%AEtre), basically describes that at ___t__<sub>0-n</sub>_, the universe was a single, infinitely dense singularity that somehow, _spontaneously_ started explosively expanding at ___t__<sub>0</sub>_.
 
-[Vesto Slipher](https://en.wikipedia.org/wiki/Vesto_M._Slipher) first made the observations in the early years of the 20<sup>th</sup> century, when he observed that all the light (_electromagnatic radiation_) from distant galaxies was [redshifted](https://en.wikipedia.org/wiki/Redshift)[^1] i.e, all the light was stretched/elongated, although it is not clear if he comprehended the full ramifications of his observations.
-
-Later on, Hubble and Lemaître independenly (_there is some controversy regarding this but kindly refrain from discussing it here_) surmised that like the Doppler effect for sound waves, this suggested that those faraway galaxies were all speeding away from us i.e, the Earth.
+[Vesto Slipher](https://en.wikipedia.org/wiki/Vesto_M._Slipher) first made the observations in the early years of the 20<sup>th</sup> century, when he observed that all the light (_electromagnatic radiation_) from distant galaxies was [redshifted](https://en.wikipedia.org/wiki/Redshift) i.e, all the light was stretched/elongated, hence, they were moving away from us[^1] although it is not clear if he comprehended the full ramifications of his observations.
 
 Hence, if all objects in the known universe were speeding away from each other then it was logical to conclude that at one point in time, all matter and energy were one singularity, which was calculated to be approximately _1.38x10<sup>11</sup>_ years ago.[^2]
 
@@ -58,6 +56,6 @@ sh scripts/run.sh `executableType` `pathToDataFile`
 
   - If not set, the example file `repo/data/galaxies.json` is used and a notice is displayed on the console.
 
-[^1]: https://www.e-education.psu.edu/astro801/content/l10_p3.html
+[^1]: Slipher, Vesto (1917). "Nebulae". Proceedings of the American Philosophical Society. 56: 403–409. Bibcode:1917PAPhS..56..403S.
 [^2]: Planck Collaboration (2020). "Planck 2018 results. VI. Cosmological parameters". Astronomy & Astrophysics. 641. page A6 (see PDF page 15, Table 2: "Age/Gyr", last column). arXiv:1807.06209. Bibcode:2020A&A...641A...6P. doi:10.1051/0004-6361/201833910. S2CID 119335614.
-[^3]: Slipher, Vesto (1917). "Nebulae". Proceedings of the American Philosophical Society. 56: 403–409. Bibcode:1917PAPhS..56..403S.
+[^3]: "Hubble Flow". The Swinburne Astronomy Online Encyclopedia of Astronomy. Swinburne University of Technology. Retrieved 2013-05-14.
