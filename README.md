@@ -8,7 +8,7 @@ The Big Bang Theory, extrapolated from the works of [Edwin Powell Hubble](https:
 
 [Vesto Slipher](https://en.wikipedia.org/wiki/Vesto_M._Slipher) first made the observations in the early years of the 20<sup>th</sup> century, when he observed that all the light (_electromagnatic radiation_) from distant galaxies was [redshifted](https://en.wikipedia.org/wiki/Redshift) i.e, all the light was stretched/elongated, hence, they were moving away from us[^1] although it is not clear if he comprehended the full ramifications of his observations.
 
-Hence, if all objects in the known universe were speeding away from each other then it was logical to conclude that at one point in time, all matter and energy were one singularity, which was calculated to be approximately _1.38x10<sup>11</sup>_ years ago.[^2]
+Hence, if all objects in the known universe were speeding away from each other then it was logical to conclude that at one point in time, all matter and energy were one singularity, which recently, was calculated to be approximately _1.38x10<sup>11</sup>_ years ago.[^2]
 
 Based on further research, it was discovered that the further away two points were in the universe (_in scales that can be calculated in MegaParsecs_), the faster they were speeding away from each other[^3]. From this discovery, spawned the _Hubble–Lemaître law_.
 
