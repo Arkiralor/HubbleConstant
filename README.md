@@ -37,7 +37,7 @@ sh scripts/build.sh `buildType`
 ```
 
 - The `buildType` can be: `release` | `debug` | `both`
-  - `both` will obviously build both targets sequencially.
+  - `both` will obviously build both targets sequentially.
 
 ### 2. Run
 
