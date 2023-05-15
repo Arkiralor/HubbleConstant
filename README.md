@@ -17,7 +17,7 @@ Based on further research, it was discovered that the further away two points we
 The _Hubble Constant_ can be defined as the rate at which the speed of separation changes as the distance between two objects increases. For any object significantly far away, it is described as
 
 ```math
-    h_0 = v \over d
+    h_0 = {v \over d}
 ```
 
 Its unit is ___Km s<sup>-1</sup> Mpc<sup>-1</sup>___ i.e, _Kilometres per Second per Megaparsec_.
