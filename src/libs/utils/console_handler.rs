@@ -13,7 +13,7 @@ pub fn get_args() -> Result<Vec<String>, String> {
 
 fn check_args(args: &Vec<String>) -> bool {
     //! Check if the arguments passed to the program are valid.
-    if args.len() > MAX_ARGS || args.len() <= 0 {
+    if args.len() > MAX_ARGS || args.len() == 0 {
         return false;
     } else {
         return true;
