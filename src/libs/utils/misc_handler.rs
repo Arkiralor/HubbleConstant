@@ -1,5 +1,5 @@
 //! Handler functions for miscellaneous tasks.
-use crate::libs::constants::MAX_FLOAT_DECIMALS;
+use crate::libs::constants::{DISCLAIMER_1, DISCLAIMER_2, MAX_FLOAT_DECIMALS};
 
 pub fn format_f64(f: f64) -> String {
     //! Format a float value to a string with a maximum of `MAX_FLOAT_DECIMALS` decimal places.
@@ -29,4 +29,10 @@ pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: V
         }
     }
     return unique_list;
+}
+
+pub fn print_disclaimers() {
+    //! Print the disclaimers.
+    println!("\n{}", DISCLAIMER_1);
+    println!("{}\n", DISCLAIMER_2);
 }
