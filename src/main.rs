@@ -1,5 +1,7 @@
 #![allow(warnings)]
 
+use std::path::Path;
+
 mod libs;
 
 use libs::constants::get_project_root;
@@ -10,10 +12,12 @@ use libs::utils::hubble_handler::{calculate_age, get_h0};
 use libs::utils::misc_handler::{format_f64, print_disclaimers};
 use std::error::Error;
 
-use std::path::Path;
-
 fn main() -> Result<Output, Box<dyn Error>> {
-    let args: Vec<String> = get_args();
+    let args: Vec<String> = match get_args() {
+        Ok(val) => val,
+        Err(_) => panic!("Error while getting command line arguments."),
+    };
+
     let file_path: String = match get_file_path_from_args(&args) {
         Ok(val) => val,
         Err(_) => get_project_root()

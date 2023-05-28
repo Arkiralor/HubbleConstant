@@ -2,14 +2,14 @@ use std::{env, error::Error};
 
 use crate::libs::constants::MAX_ARGS;
 
-pub fn get_args() -> Vec<String> {
+pub fn get_args() -> Result<Vec<String>, String> {
     //! Get the command line arguments passed to the program.
     let args: Vec<String> = env::args().collect();
 
     if !check_args(&args) {
         panic!("Too many/few arguments passed to the program.");
     }
-    return args;
+    return Ok(args);
 }
 
 fn check_args(args: &Vec<String>) -> bool {
