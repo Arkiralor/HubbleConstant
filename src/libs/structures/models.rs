@@ -3,7 +3,7 @@
 use serde::Deserialize;
 use serde::Serialize;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Serialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
 ///
 /// Members:
@@ -12,9 +12,9 @@ use serde::Serialize;
 /// * `distance`: f64 - _Distance of the galaxy from Earth in Megaparsec(s)_.
 /// * `velocity`: f64 - _Velocity of the galaxy in Kilometre(s) per Second_.
 pub struct Galaxy {
-    name: String,
-    distance: f64,
-    velocity: f64,
+    pub name: String,
+    pub distance: f64,
+    pub velocity: f64,
 }
 
 /// Implementation of the Galaxy struct.
@@ -30,12 +30,13 @@ impl Galaxy {
         return obj;
     }
 
-    pub fn create(name: String, distance: f64, velocity: f64) -> Galaxy {
-        //! Create a new galaxy object from the given data.
+    pub fn create(name: Option<String>, distance: Option<f64>, velocity: Option<f64>) -> Galaxy {
+        //! Create a new galaxy object from the given data.      
+        
         let obj: Galaxy = Galaxy {
-            name: name,
-            distance: distance,
-            velocity: velocity,
+            name: name.unwrap_or(String::from("defaultName")),
+            distance: distance.unwrap_or(0.0 as f64),
+            velocity: velocity.unwrap_or(0.0 as f64),
         };
         return obj;
     }
@@ -58,8 +59,8 @@ impl Galaxy {
 
 #[derive(Debug, Serialize)]
 pub struct Output {
-    h0: f64,
-    age: f64,
+    pub h0: f64,
+    pub age: f64,
 }
 
 impl Output {

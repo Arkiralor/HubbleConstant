@@ -33,7 +33,7 @@ fn main() -> Result<Output, Box<dyn Error>> {
         Ok(val) => val,
         Err(_) => panic!("Error while reading data file."),
     };
-    let h0: f64 = match get_h0(data) {
+    let h0: f64 = match get_h0(&data) {
         Ok(val) => val,
         Err(_) => panic!("Error while calculating Hubble Constant."),
     };
@@ -55,3 +55,6 @@ fn main() -> Result<Output, Box<dyn Error>> {
     let return_value: Result<Output, Box<dyn Error>> = Ok(output);
     return return_value;
 }
+
+#[cfg(test)]
+mod tests;

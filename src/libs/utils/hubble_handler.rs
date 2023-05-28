@@ -1,7 +1,7 @@
 use crate::libs::constants::{KM_IN_MPC, SEC_IN_YEAR};
 use crate::libs::structures::models::Galaxy;
 
-pub fn get_h0(data: Vec<Galaxy>) -> Result<f64, String> {
+pub fn get_h0(data: &Vec<Galaxy>) -> Result<f64, String> {
     //! Calculate the mean value of the Hubble Constant from
     //! a list of H0s of observed galaxies.
     //!
