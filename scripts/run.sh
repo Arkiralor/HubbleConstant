@@ -21,14 +21,14 @@ fi
 if [[ "$arg" == "release" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
         ## The excape sequences are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
-        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
+        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example.\n"
         _file="$BASEDIR/data/galaxies.json"
     fi
     ./target/release/hubble-constant.exe "$_file" "$_show"
 elif [[ "$arg" == "debug" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
         ## The excape sequences are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
-        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
+        echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example.\n"
         _file="$BASEDIR/data/galaxies.json"
     fi
     ./target/debug/hubble-constant.exe "$_file" "$_show"
