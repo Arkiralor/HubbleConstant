@@ -12,7 +12,7 @@ use libs::utils::hubble_handler::{calculate_age, get_h0};
 use libs::utils::misc_handler::{format_f64, print_disclaimers};
 use std::error::Error;
 
-fn main() -> Result<Output, Box<dyn Error>> {
+fn main() {
     let args: Vec<String> = match get_args() {
         Ok(val) => val,
         Err(_) => panic!("Error while getting command line arguments."),
@@ -50,10 +50,6 @@ fn main() -> Result<Output, Box<dyn Error>> {
         format_f64(h0)
     );
     println!("Age of the Universe:\t{} years", format_f64(age));
-
-    let output: Output = Output::create(h0, age);
-    let return_value: Result<Output, Box<dyn Error>> = Ok(output);
-    return return_value;
 }
 
 #[cfg(test)]
