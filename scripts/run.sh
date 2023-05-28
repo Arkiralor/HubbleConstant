@@ -2,18 +2,31 @@
 
 arg="$1"
 _file="$2"
-BASEDIR="$PWD"
+
+if [[ "$_file" == "" || -z "$_file" ]]; then
+    unameOut="$(uname -s)"
+    ## The escape sequences are respectively: `bold` and `reset` codes for the string `$unameOut`
+    echo -e "\nPlatform Detected:\t\033[1m$unameOut\033[0m\n"
+    case "${unameOut}" in
+        Linux*)     BASEDIR="$PWD";;
+        Darwin*)    BASEDIR="$PWD";;
+        CYGWIN*)    BASEDIR="$(cmd //c cd)";;
+        MINGW*)     BASEDIR="$(cmd //c cd)";;
+        MSYS_NT*)   BASEDIR="$(cmd //c cd)";;
+        *)          machine="UNKNOWN:$unameOut"
+    esac
+fi
 
 if [[ "$arg" == "release" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
-        ## The excapr sequence are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
+        ## The excape sequences are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
         echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
         _file="$BASEDIR/data/galaxies.json"
     fi
     ./target/release/hubble-constant.exe "$_file"
 elif [[ "$arg" == "debug" ]]; then
     if [[ "$_file" == "" || -z "$_file" ]]; then
-        ## The excapr sequence are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
+        ## The excape sequences are respectively: `red`, `bold` and `reset` codes for the string `NOTICE:`
         echo -e "\033[31m\033[1mNOTICE:\033[0m    File not specified; taking default example."
         _file="$BASEDIR/data/galaxies.json"
     fi
