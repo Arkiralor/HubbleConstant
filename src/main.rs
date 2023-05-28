@@ -2,26 +2,49 @@
 
 mod libs;
 
-use std::error::Error;
-use libs::utils::console_handler::{get_args, get_file_path_from_args};
+use libs::constants::get_project_root;
 use libs::structures::models::{Galaxy, Output};
+use libs::utils::console_handler::{get_args, get_file_path_from_args};
 use libs::utils::files_handler::read_data;
-use libs::utils::hubble_handler::{get_h0, calculate_age};
-use libs::utils::misc_handler::format_f64;
+use libs::utils::hubble_handler::{calculate_age, get_h0};
+use libs::utils::misc_handler::{format_f64, print_disclaimers};
+use std::error::Error;
 
-fn main() -> Result<Output, Box<dyn Error>>{
+use std::path::Path;
+
+fn main() -> Result<Output, Box<dyn Error>> {
     let args: Vec<String> = get_args();
-    let file_path: String = get_file_path_from_args(&args);
+    let file_path: String = match get_file_path_from_args(&args) {
+        Ok(val) => val,
+        Err(_) => get_project_root()
+            .unwrap()
+            .join("data")
+            .join("galaxies.csv")
+            .to_str()
+            .unwrap()
+            .to_string(),
+    };
 
-    let data: Vec<Galaxy> = read_data(&file_path);
-    let h0: f64 = get_h0(data);
-    let age: f64 = calculate_age(h0);
+    let data: Vec<Galaxy> = match read_data(&file_path) {
+        Ok(val) => val,
+        Err(_) => panic!("Error while reading data file."),
+    };
+    let h0: f64 = match get_h0(data) {
+        Ok(val) => val,
+        Err(_) => panic!("Error while calculating Hubble Constant."),
+    };
+    let age: f64 = match calculate_age(h0) {
+        Ok(val) => val,
+        Err(_) => panic!("Error while calculating age of the universe."),
+    };
 
-    println!("DISCLAIMER: The values calculated by this program are based on the data provided by the user.");
-    println!("DISCLAIMER: There might be floating point precision errors.");
+    print_disclaimers();
 
     println!("Data File Used:\t'{}'", file_path);
-    println!("Hubble Constant was calculated to be:\t{} km/s/Mpc", format_f64(h0));
+    println!(
+        "Hubble Constant was calculated to be:\t{} km/s/Mpc",
+        format_f64(h0)
+    );
     println!("Age of the Universe:\t{} years", format_f64(age));
 
     let output: Output = Output::create(h0, age);
