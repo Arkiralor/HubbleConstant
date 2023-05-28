@@ -24,11 +24,20 @@ Its unit is ___Km s<sup>-1</sup> Mpc<sup>-1</sup>___ i.e, _Kilometres per Second
   
 - It can be explained/used as "_The speed of separation between two sufficiently far away objects A and B increases by X Km sec<sup>-1</sup> for every 1 Mpc increase in the distance between A and B_".
 
-Further reading on the subject is recommended and [this link](https://en.wikipedia.org/wiki/Hubble%27s_law) can be used as a starting point for laypersons; the more academically inclined may refer to the [Pensylvania State University's dossier](https://www.e-education.psu.edu/astro801/content/l10_p3.html) on the subject.
+Further reading on the subject is recommended and [_this link_](https://en.wikipedia.org/wiki/Hubble%27s_law) can be used as a starting point for laypersons; the more academically inclined may refer to the [_Pensylvania State University's dossier_](https://www.e-education.psu.edu/astro801/content/l10_p3.html) on the subject.
 
 ## Usage
 
 There are two steps to use this application. First, we have to build the binary for the system that we need to run the application on; then we can run the binary itself.
+
+### Pre-Requistes
+
+There are a few pre-requisites to run this application as the source code makes some assumptions about the platform it is expected to run on.
+
+1. __Console:__ _BASH_ for UNIX-based operating Systems
+   - _GitBash_ for Windows-based Operating Systems
+2. __Language Compiler:__ This application was written using the _RuctC_ compiler `v1.69`.
+   - __Package Manager:__ The package manager for Rust, _Cargo_ is required; if not installed during the installation of the compiler, kindly rectify.
 
 ### 1. Build
 
