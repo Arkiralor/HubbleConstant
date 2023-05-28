@@ -21,7 +21,12 @@
     },
     {
         "name": "Tadpole Galaxy - UGC 10214",
-        "distance": 9.4E+3,
-        "velocity": 1.2264E+2
+        "distance": 1.2264E+2,
+        "velocity": 9.214E+3
+    },
+    {
+        "name": "Condor Galaxy - NGC 6872",
+        "distance": 6.5E+1,
+        "velocity": 4.555E+3
     }
 ]

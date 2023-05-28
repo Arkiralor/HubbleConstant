@@ -1,9 +1,11 @@
 //! Module to store all the models (structs) used in the project.
+use std::fmt::Display;
+
 
 use serde::Deserialize;
 use serde::Serialize;
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Deserialize, Serialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
 ///
 /// Members:
@@ -83,5 +85,14 @@ impl Output {
         //! Update the values for an output object.
         self.h0 = h0.unwrap_or(0.0 as f64);
         self.age = age.unwrap_or(0.0 as f64);
+    }
+}
+
+#[derive(Debug)]
+pub struct InvalidInputError(&'static str);
+impl std::error::Error for InvalidInputError {}
+impl std::fmt::Display for InvalidInputError {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "{}", self.0)
     }
 }

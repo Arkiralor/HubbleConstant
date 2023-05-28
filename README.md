@@ -43,12 +43,20 @@ There are a few pre-requisites to run this application as the source code makes 
 
 This step compiles the source code into a platform specific executable.
 
+#### Build Syntax
+
 ```sh
-sh scripts/build.sh `buildType`
+sh scripts/build.sh `buildType` 
 ```
 
 - The `buildType` can be: `release` | `debug` | `both`
   - `both` will obviously build both targets sequentially.
+
+#### Build Example
+
+```sh
+sh scripts/build.sh both
+```
 
 ### 2. Run
 
@@ -58,14 +66,41 @@ A data (_JSON_) file will be needed to calculate the Hubble Constant based on th
 
 An example is provided in `data/galaxies.json`.
 
+#### Run Syntax
+
 ```sh
-sh scripts/run.sh `executableType` `pathToDataFile`
+sh scripts/run.sh `executableType` `pathToDataFile` ?`show`
 ```
 
 - The `executableType` can be: `release` | `debug`.
 - The `pathToDataFile` can either be the absolute path to the file or the relative path from `Cargo.toml`
 
   - If not set, the example file `$(PWD)/data/galaxies.json` is used and a notice is displayed on the console.
+- If `"show"` is presented, then the list of galaxies will be printed out on screen.
+
+#### Run Example
+
+```sh
+sh scripts/run.sh release user/home/HubbleConstant/data/galaxies.json show
+```
+
+## Improvements & Enhancements
+
+This codebase will be periodically updated as and when the original creator deems necessary but will not be actively maintained except for on special request by persons of interest.
+
+However, you may send requests for enhancements and improvements to [the original author](mailto:prithoo11335@gmail.com) for consideration.
+  - Do __NOT__ create issues for improvements or enhancements; they will __NOT__ be entertained and you __WILL__ be _Blocked_.
+
+For bugfixes, you can create a new Github issue for the repository.
+
+## Author Details
+
+For miscellaneous queries or correction requests for the documentation (_including this README_), you may contact the original author via the following channels.
+
+- [eMail _(Personal)_](mailto:prithoo11335@gmail.com)
+- [Github _(Personal)_](https://github.com/Arkiralor)
+- [Github _(Official)_](https://github.com/prithoomedhi)
+- [LinkedIn](https://www.linkedin.com/in/prithoo11335/)
 
 [^1]: Slipher, Vesto (1917). "Nebulae". Proceedings of the American Philosophical Society. 56: 403–409. Bibcode:1917PAPhS..56..403S.
 [^2]: Planck Collaboration (2020). "Planck 2018 results. VI. Cosmological parameters". Astronomy & Astrophysics. 641. page A6 (see PDF page 15, Table 2: "Age/Gyr", last column). arXiv:1807.06209. Bibcode:2020A&A...641A...6P. doi:10.1051/0004-6361/201833910. S2CID 119335614.

@@ -6,7 +6,7 @@ mod libs;
 
 use libs::constants::get_project_root;
 use libs::structures::models::{Galaxy, Output};
-use libs::utils::console_handler::{get_args, get_file_path_from_args};
+use libs::utils::console_handler::{get_args, get_file_path_from_args, get_show};
 use libs::utils::files_handler::read_data;
 use libs::utils::hubble_handler::{calculate_age, get_h0};
 use libs::utils::misc_handler::{format_f64, print_disclaimers};
@@ -29,7 +29,7 @@ fn main() {
             .to_string(),
     };
 
-    let data: Vec<Galaxy> = match read_data(&file_path) {
+    let data: Vec<Galaxy> = match read_data(&file_path, get_show(&args).unwrap_or(false)) {
         Ok(val) => val,
         Err(_) => panic!("Error while reading data file."),
     };
