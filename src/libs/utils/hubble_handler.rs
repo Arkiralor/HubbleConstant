@@ -15,7 +15,7 @@ pub fn get_h0(data: &Vec<Galaxy>) -> Result<f64, String> {
         return Err("Empty data list".to_string());
     }
 
-    let _sum: f64 = data.iter().map(|item| item.h0()).sum();
+    let _sum: f64 = data.iter().map(|item: &Galaxy| item.h0()).sum();
 
     if _sum.is_nan() {
         return Err("Invalid Hubble Constant values".to_string());
