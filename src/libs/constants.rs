@@ -15,7 +15,7 @@ pub const DISCLAIMER_1: &str =
     "DISCLAIMER #1: The values calculated by this program are based on the data provided by the user.\
     \n\tThe accuracy and precision are dependent upon the data provided in the `.json` file.\
     \n\tFor higher accuracy and precision, please provide more data points in the `.json` file.\n\n";
-pub const DISCLAIMER_2: &str = "DISCLAIMER #2: There might be floating point precision errors as the floating point values used are 64-bit.";
+pub const DISCLAIMER_2: &str = "DISCLAIMER #2: There might be floating point precision errors as the floating point values used are 64-bit in size.";
 
 pub fn get_project_root() -> Result<PathBuf, String> {
     //! Get the root directory of the project.
