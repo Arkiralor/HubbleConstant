@@ -1,4 +1,4 @@
-## Usage: sh scrpts/run.sh (release | debug) file/path/to/json
+# ## Usage: sh scrpts/run.sh (release | debug) file/path/to/json
 
 arg="$1"
 _file="$2"
@@ -40,5 +40,7 @@ else
     elif [ -z "$arg" ]; then
         arg="NULL"
     fi
-    echo "Unknown build type given:    $arg."
+    echo "Unknown build type given:    $arg; valid options are: \`release | debug\`"
 fi
+
+

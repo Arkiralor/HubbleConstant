@@ -12,7 +12,9 @@ pub fn read_data(file_path: &str, show: bool) -> Result<Vec<Galaxy>, String> {
         Err(s) => panic!("{}", s),
     };
 
-    println!("Data File Used:\t'{}'", &normalised_file_path.display());
+    if show {
+        println!("Data File Used:\t'{}'", &normalised_file_path.display());
+    }
 
     let file_obj: File = File::open(normalised_file_path).expect(&panic_msg);
     let data: Vec<Galaxy> = serde_json::from_reader(file_obj).expect("Error while reading file");

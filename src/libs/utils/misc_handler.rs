@@ -1,14 +1,16 @@
 //! Handler functions for miscellaneous tasks.
 use crate::libs::constants::{DISCLAIMER_1, DISCLAIMER_2, MAX_FLOAT_DECIMALS};
 
-pub fn format_f64(f: f64) -> String {
+pub fn format_f64(f: f64) -> Result<String, String> {
     //! Format a float value to a string with a maximum of `MAX_FLOAT_DECIMALS` decimal places.
 
     let mut format_string: String = format!("{:.*}", MAX_FLOAT_DECIMALS, f);
-    return format_string;
+    Ok(format_string)
 }
 
-pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: Vec<T>) -> Vec<T> {
+pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(
+    _list: Vec<T>,
+) -> Result<Vec<T>, String> {
     //! Find all the UNIQUE elements in a given vector of Datatype T;
     //!
     //! _where T has the following attributes:_
@@ -28,7 +30,7 @@ pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: V
             unique_list.push(item);
         }
     }
-    return unique_list;
+    Ok(unique_list)
 }
 
 pub fn print_disclaimers() {
