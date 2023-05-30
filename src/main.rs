@@ -44,7 +44,6 @@ fn main() {
 
     print_disclaimers();
 
-    println!("Data File Used:\t'{}'", file_path);
     println!(
         "Hubble Constant was calculated to be:\t{} km/s/Mpc",
         format_f64(h0)
