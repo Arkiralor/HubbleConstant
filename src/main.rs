@@ -10,7 +10,6 @@ use libs::utils::console_handler::{get_args, get_file_path_from_args, get_show};
 use libs::utils::files_handler::read_data;
 use libs::utils::hubble_handler::{calculate_age, get_h0};
 use libs::utils::misc_handler::{format_f64, print_disclaimers};
-use std::error::Error;
 
 fn main() {
     let args: Vec<String> = match get_args() {
@@ -46,9 +45,12 @@ fn main() {
 
     println!(
         "Hubble Constant was calculated to be:\t{} km/s/Mpc",
-        format_f64(h0)
+        format_f64(h0).unwrap_or(String::from("0.0"))
     );
-    println!("Age of the Universe:\t{} years", format_f64(age));
+    println!(
+        "Age of the Universe:\t{} years",
+        format_f64(age).unwrap_or(String::from("0.0"))
+    );
 }
 
 #[cfg(test)]

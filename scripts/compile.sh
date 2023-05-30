@@ -16,5 +16,5 @@ fi
 
 
 sh scripts/build.sh "$arg" >> logs/HubbleConstant.log
-sh scripts/run.sh release "$_file" "$_show" >> logs/output.txt 2>&1
+sh scripts/run.sh release "$_file" "$_show"
 echo -e "\n------------------------------------------------------\n" >> logs/output.txt 2>&1
