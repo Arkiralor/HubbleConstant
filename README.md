@@ -84,6 +84,29 @@ sh scripts/run.sh `executableType` `pathToDataFile` ?`show`
 sh scripts/run.sh release user/home/HubbleConstant/data/galaxies.json show
 ```
 
+### Compile
+
+This step combines the two previous steps into one.
+
+#### Compile Syntax
+
+```sh
+sh scripts/compile.sh ?`executableType` ?`pathToDataFile` ?`show`
+```
+
+As denoted in the syntax, all three arguments are optional here and if an argument is not provided, the program will be provided with a default value for the argument.
+
+1. `executableType` = `release`
+2. `pathToDataFile` = `data/galaxies.json`
+
+#### Compile Example(s)
+
+```sh
+sh scripts/compile.sh
+sh scripts/compile.sh '' '' show
+sh scripts/compile.sh release data/json
+```
+
 ## Improvements & Enhancements
 
 This codebase will be periodically updated as and when the original creator deems necessary but will not be actively maintained except for on special request by persons of interest.
