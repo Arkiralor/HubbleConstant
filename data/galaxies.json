@@ -28,5 +28,10 @@
         "name": "Condor Galaxy - NGC 6872",
         "distance": 6.5E+1,
         "velocity": 4.555E+3
+    },
+    {
+        "name": "GN-z11",
+        "distance": 4.1E+3,
+        "velocity": 2.95050E+5
     }
 ]

@@ -36,6 +36,7 @@ fn main() {
         Ok(val) => val,
         Err(_) => panic!("Error while calculating Hubble Constant."),
     };
+
     let age: f64 = match calculate_age(h0) {
         Ok(val) => val,
         Err(_) => panic!("Error while calculating age of the universe."),
