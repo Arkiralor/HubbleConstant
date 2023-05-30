@@ -4,7 +4,7 @@ use std::fmt::Display;
 use serde::Deserialize;
 use serde::Serialize;
 
-use crate::libs::constants::{DISTANCE_ERROR_MSG, VELOCITY_ERROR_MSG};
+use crate::libs::constants::{DISTANCE_ERROR_MSG, NULL_VEC_ERROR, VELOCITY_ERROR_MSG};
 
 #[derive(Deserialize, Serialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
@@ -68,6 +68,42 @@ impl Galaxy {
             distance,
             velocity,
         }
+    }
+
+    pub fn create_many(
+        data: Vec<(Option<String>, Option<f64>, Option<f64>)>,
+    ) -> Result<Vec<Galaxy>, String> {
+        //! Create multiple `Galaxy` objects via data provided.
+        //!
+        //! ### Args:
+        //!
+        //!     [
+        //!         1. (name: Option<String>, distance: Option<f64>, velocity: Option<f64>)
+        //!         2. (name: Option<String>, distance: Option<f64>, velocity: Option<f64>)
+        //!         3. (name: Option<String>, distance: Option<f64>, velocity: Option<f64>)
+        //!         .
+        //!         .
+        //!         n. (name: Option<String>, distance: Option<f64>, velocity: Option<f64>)
+        //!     ]
+        //!
+        //! ### Returns:
+        //!     
+        //!     Vec<Galaxy>
+        if data.len() == 0 {
+            return Err(NULL_VEC_ERROR.to_owned());
+        }
+
+        let mut results: Vec<Galaxy> = Vec::new();
+
+        for item in data.iter() {
+            results.push(Galaxy::create(
+                item.0.clone(), // This variable needs to be cloned as `String` variables are stored in the Heap and not the stack.
+                item.1,
+                item.2,
+            ))
+        }
+
+        Ok(results)
     }
 
     pub fn update(&mut self, name: Option<String>, distance: Option<f64>, velocity: Option<f64>) {
@@ -142,14 +178,5 @@ impl Output {
             Some(val) => val,
             None => self.age.clone(),
         };
-    }
-}
-
-#[derive(Debug)]
-pub struct InvalidInputError(&'static str);
-impl std::error::Error for InvalidInputError {}
-impl std::fmt::Display for InvalidInputError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
-        write!(f, "{}", self.0)
     }
 }
