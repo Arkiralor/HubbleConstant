@@ -31,7 +31,7 @@ fn main() {
 
     let data: Vec<Galaxy> = match read_data(&file_path, get_show(&args).unwrap_or(false)) {
         Ok(val) => val,
-        Err(_) => panic!("Error while reading data file."),
+        Err(_) => panic!("Error while reading data file at {}.", file_path),
     };
     let h0: f64 = match get_h0(&data) {
         Ok(val) => val,
