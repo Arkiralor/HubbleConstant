@@ -4,6 +4,8 @@ arg="$1"
 _file="$2"
 _show="$3"
 
+sh scripts/generate_logs.sh
+
 if [[ "$_file" == "" || -z "$_file" ]]; then
     unameOut="$(uname -s)"
     ## The escape sequences are respectively: `bold` and `reset` codes for the string `$unameOut`

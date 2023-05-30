@@ -2,6 +2,8 @@
 
 arg="$1"
 
+sh scripts/generate_logs.sh
+
 if [[ "$arg" == "release" ]]; then
     echo "Building release version..."
     cargo build --release
