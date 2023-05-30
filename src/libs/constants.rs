@@ -20,12 +20,12 @@ pub fn get_project_root() -> Result<PathBuf, String> {
     //!
     //! _Technically, this is not exactly a constant, but it can be treated as one for the purposes of this codebase._
 
-    let mut path: PathBuf = match env::current_dir() {
+    let path: PathBuf = match env::current_dir() {
         Ok(val) => val,
         Err(s) => return Err(s.to_string()),
     };
 
-    return Ok(path);
+    Ok(path)
 }
 
 pub const DISTANCE_ERROR_MSG: &str =

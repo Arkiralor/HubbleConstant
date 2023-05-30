@@ -1,31 +1,21 @@
 //! Module to store extra implementations of the structs defined in `models.rs`.
 
 use std::{
-    process::{
-        ExitCode, 
-        Termination
-    }, 
-    fmt::{
-        self, 
-        Display,
-        Debug,
-        Formatter,
-        Result
-    }
+    fmt::{Debug, Display, Formatter, Result},
+    process::{ExitCode, Termination},
 };
 
 use crate::libs::structures::models::{Galaxy, Output};
-
 
 impl Clone for Galaxy {
     //! Implementation of the Clone trait for the Galaxy struct.
     fn clone(&self) -> Self {
         //! Clone the Galaxy struct.
-        return Galaxy {
+        Galaxy {
             name: self.name.clone(),
-            distance: self.distance.clone(),
-            velocity: self.velocity.clone(),
-        };
+            distance: self.distance,
+            velocity: self.velocity,
+        }
     }
 }
 
@@ -48,6 +38,6 @@ impl Termination for Output {
     //! Implementation of the Termination trait for the Output struct.
     fn report(self) -> ExitCode {
         //! Report the output of the program.
-        return Into::into(0);
+        Into::into(0)
     }
 }

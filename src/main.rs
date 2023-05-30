@@ -1,11 +1,8 @@
 #![allow(warnings)]
-
-use std::path::Path;
-
 mod libs;
 
 use libs::constants::get_project_root;
-use libs::structures::models::{Galaxy, Output};
+use libs::structures::models::Galaxy;
 use libs::utils::console_handler::{get_args, get_file_path_from_args, get_show};
 use libs::utils::files_handler::read_data;
 use libs::utils::hubble_handler::{calculate_age, get_h0};
@@ -14,7 +11,7 @@ use libs::utils::misc_handler::{format_f64, print_disclaimers};
 fn main() {
     let args: Vec<String> = match get_args() {
         Ok(val) => val,
-        Err(_) => panic!("Error while getting command line arguments."),
+        Err(_) => panic!("Error while getting command line arguments: Failed to parse arguments."),
     };
 
     let file_path: String = match get_file_path_from_args(&args) {
@@ -28,7 +25,7 @@ fn main() {
             .to_string(),
     };
 
-    let data: Vec<Galaxy> = match read_data(&file_path, get_show(&args).unwrap_or(false)) {
+    let data: Vec<Galaxy> = match read_data(&file_path, get_show(&args).unwrap_or_default()) {
         Ok(val) => val,
         Err(_) => panic!("Error while reading data file at {}.", file_path),
     };
@@ -46,11 +43,11 @@ fn main() {
 
     println!(
         "Hubble Constant was calculated to be:\t{} km/s/Mpc",
-        format_f64(h0).unwrap_or(String::from("0.0"))
+        format_f64(h0).unwrap_or_else(|_| String::from("0.0"))
     );
     println!(
         "Age of the Universe:\t{} years",
-        format_f64(age).unwrap_or(String::from("0.0"))
+        format_f64(age).unwrap_or_else(|_| String::from("0.0"))
     );
 }
 

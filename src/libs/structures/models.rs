@@ -89,7 +89,7 @@ impl Galaxy {
         //! ### Returns:
         //!     
         //!     Vec<Galaxy>
-        if data.len() == 0 {
+        if data.is_empty() {
             return Err(NULL_VEC_ERROR.to_owned());
         }
 
