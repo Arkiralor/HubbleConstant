@@ -3,7 +3,7 @@ use crate::libs::structures::models::{Galaxy, Output};
 #[test]
 fn test_galaxy_new() {
     let obj: Galaxy = Galaxy::new();
-    assert_eq!(obj.name, "");
+    assert_eq!(obj.name, "defaultName");
     assert_eq!(obj.distance, 0.0);
     assert_eq!(obj.velocity, 0.0);
 }
@@ -14,11 +14,7 @@ fn test_galaxy_create() {
     let distance: f64 = 34.0;
     let velocity: f64 = 14.0;
 
-    let galaxy: Galaxy = Galaxy::create(
-        Some(name.clone()),
-        Some(distance),
-        Some(velocity),
-    );
+    let galaxy: Galaxy = Galaxy::create(Some(name.clone()), Some(distance), Some(velocity));
     assert_eq!(galaxy.name, name);
     assert_eq!(galaxy.distance, distance);
     assert_eq!(galaxy.velocity, velocity);
@@ -31,11 +27,7 @@ fn test_galaxy_update() {
     let name: Option<String> = Some(String::from("Galaxy 1"));
     let distance: Option<f64> = Some(14.0 as f64);
     let velocity: Option<f64> = Some(10.0 as f64);
-    galaxy.update(
-        name.clone(),
-        distance,
-        velocity,
-    );
+    galaxy.update(name.clone(), distance, velocity);
     assert_eq!(galaxy.name, name.unwrap());
     assert_eq!(galaxy.distance, distance.unwrap());
     assert_eq!(galaxy.velocity, velocity.unwrap());
@@ -47,11 +39,7 @@ fn test_galaxy_h0() {
     let distance: f64 = 34.0;
     let velocity: f64 = 14.0;
 
-    let galaxy: Galaxy = Galaxy::create(
-        Some(name.clone()),
-        Some(distance),
-        Some(velocity),
-    );
+    let galaxy: Galaxy = Galaxy::create(Some(name.clone()), Some(distance), Some(velocity));
     let h0: f64 = galaxy.h0();
     assert_eq!(h0, (velocity / distance));
 }

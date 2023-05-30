@@ -1,9 +1,10 @@
 //! Module to store all the models (structs) used in the project.
 use std::fmt::Display;
 
-
 use serde::Deserialize;
 use serde::Serialize;
+
+use crate::libs::constants::{DISTANCE_ERROR_MSG, VELOCITY_ERROR_MSG};
 
 #[derive(Deserialize, Serialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
@@ -23,31 +24,81 @@ pub struct Galaxy {
 impl Galaxy {
     pub fn new() -> Galaxy {
         //! Create a new blank galaxy object.
-        let name: String = String::from("");
-        let obj: Galaxy = Galaxy {
-            name: name,
-            distance: 0.0 as f64,
-            velocity: 0.0 as f64,
-        };
-        return obj;
+        let name: String = String::from("defaultName");
+        let distance: f64 = 0.0 as f64;
+        let velocity: f64 = 0.0 as f64;
+
+        Galaxy {
+            name,
+            distance,
+            velocity,
+        }
     }
 
-    pub fn create(name: Option<String>, distance: Option<f64>, velocity: Option<f64>) -> Galaxy {
+    pub fn create(n: Option<String>, d: Option<f64>, v: Option<f64>) -> Galaxy {
         //! Create a new galaxy object from the given data.      
-        
-        let obj: Galaxy = Galaxy {
-            name: name.unwrap_or(String::from("defaultName")),
-            distance: distance.unwrap_or(0.0 as f64),
-            velocity: velocity.unwrap_or(0.0 as f64),
+
+        let name: String = match n {
+            Some(val) => val,
+            None => String::from("defaultName"),
         };
-        return obj;
+
+        let distance: f64 = match d {
+            Some(val) => {
+                if val <= 0.0 as f64 {
+                    panic!("{}", DISTANCE_ERROR_MSG.to_string());
+                }
+                val
+            }
+            None => 0.0 as f64,
+        };
+
+        let velocity: f64 = match v {
+            Some(val) => {
+                if val <= 0.0 as f64 {
+                    panic!("{}", VELOCITY_ERROR_MSG.to_string());
+                }
+                val
+            }
+            None => 0.0 as f64,
+        };
+
+        Galaxy {
+            name,
+            distance,
+            velocity,
+        }
     }
 
     pub fn update(&mut self, name: Option<String>, distance: Option<f64>, velocity: Option<f64>) {
         //! Update the values for a galaxy object.
-        self.name = name.unwrap_or(String::from(""));
-        self.distance = distance.unwrap_or(0.0 as f64);
-        self.velocity = velocity.unwrap_or(0.0 as f64);
+
+        match name {
+            Some(val) => self.name = val,
+            _ => {}
+        };
+
+        match distance {
+            Some(val) => {
+                if val <= 0.0 as f64 {
+                    panic!("{}", DISTANCE_ERROR_MSG.to_string());
+                } else {
+                    self.distance = val;
+                }
+            }
+            _ => {}
+        };
+
+        match velocity {
+            Some(val) => {
+                if val <= 0.0 as f64 {
+                    panic!("{}", VELOCITY_ERROR_MSG.to_string());
+                } else {
+                    self.velocity = val;
+                }
+            }
+            _ => {}
+        };
     }
 
     pub fn h0(&self) -> f64 {
@@ -83,8 +134,14 @@ impl Output {
 
     pub fn update(&mut self, h0: Option<f64>, age: Option<f64>) {
         //! Update the values for an output object.
-        self.h0 = h0.unwrap_or(0.0 as f64);
-        self.age = age.unwrap_or(0.0 as f64);
+        self.h0 = match h0 {
+            Some(val) => val,
+            None => self.h0.clone(),
+        };
+        self.age = match age {
+            Some(val) => val,
+            None => self.age.clone(),
+        };
     }
 }
 

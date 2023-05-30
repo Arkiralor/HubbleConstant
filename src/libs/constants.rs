@@ -26,3 +26,7 @@ pub fn get_project_root() -> Result<PathBuf, String> {
     println!("Current Directory: {}", path.display());
     return Ok(path);
 }
+
+pub const DISTANCE_ERROR_MSG: &str =
+    "The distance of a far-away galaxy from Terra cannot be equal or less than 0 Megaparsecs.";
+pub const VELOCITY_ERROR_MSG: &str = "For galaxies where universal expansion is applicable and hence are used to calculate the Hubble Constant, the Helioradial velocity of recession from Terra cannot be equal or less than 0 Kilometres per Second.";
