@@ -1,33 +1,27 @@
 #![allow(warnings)]
+
+use rocket::{form::validate::contains, serde::json::*, *};
+
 mod libs;
 
 use libs::constants::get_project_root;
-use libs::structures::models::Galaxy;
+use libs::structures::models::{AgeRequest, Galaxy, HubbleRequest, IndexSchema, Output};
 use libs::utils::console_handler::{get_args, get_file_path_from_args, get_show};
 use libs::utils::files_handler::read_data;
 use libs::utils::hubble_handler::{calculate_age, get_h0};
 use libs::utils::misc_handler::{format_f64, print_disclaimers};
 
-fn main() {
-    let args: Vec<String> = match get_args() {
-        Ok(val) => val,
-        Err(_) => panic!("Error while getting command line arguments: Failed to parse arguments."),
-    };
+#[get("/")]
+fn index() -> Json<IndexSchema> {
+    let resp = format!("Hello, world!");
+    Json(IndexSchema::create(Some(resp)))
+}
 
-    let file_path: String = match get_file_path_from_args(&args) {
+#[post("/hubble-from-data", data = "<req>")]
+fn hubble_from_data(req: Json<HubbleRequest>) -> Json<Output> {
+    let data: Vec<Galaxy> = match read_data(&req.file_path, req.show) {
         Ok(val) => val,
-        Err(_) => get_project_root()
-            .unwrap()
-            .join("data")
-            .join("galaxies.csv")
-            .to_str()
-            .unwrap()
-            .to_string(),
-    };
-
-    let data: Vec<Galaxy> = match read_data(&file_path, get_show(&args).unwrap_or_default()) {
-        Ok(val) => val,
-        Err(_) => panic!("Error while reading data file at {}.", file_path),
+        Err(_) => panic!("Error while reading data file at {}.", req.file_path),
     };
     let h0: f64 = match get_h0(&data) {
         Ok(val) => val,
@@ -39,16 +33,25 @@ fn main() {
         Err(_) => panic!("Error while calculating age of the universe."),
     };
 
-    print_disclaimers();
+    Json(Output::create(Some(h0), Some(age)))
+}
 
-    println!(
-        "Hubble Constant was calculated to be:\t{} km/s/Mpc",
-        format_f64(h0).unwrap_or_else(|_| String::from("0.0"))
-    );
-    println!(
-        "Age of the Universe:\t{} years",
-        format_f64(age).unwrap_or_else(|_| String::from("0.0"))
-    );
+#[post("/age-from-hubble", data = "<req>")]
+fn age_from_hubble(req: Json<AgeRequest>) -> Json<Output> {
+    let age: f64 = match calculate_age(req.h0) {
+        Ok(val) => val,
+        Err(a) => panic!("{}", a),
+    };
+
+    Json(Output::create(Some(req.h0), Some(age)))
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build()
+        .mount("/", routes![index])
+        .mount("/", routes![hubble_from_data])
+        .mount("/", routes![age_from_hubble])
 }
 
 #[cfg(test)]

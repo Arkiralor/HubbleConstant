@@ -56,7 +56,7 @@ fn test_output_create() {
     let h0: f64 = 14.0;
     let age: f64 = 34.0;
 
-    let obj: Output = Output::create(h0, age);
+    let obj: Output = Output::create(Some(h0), Some(age));
     assert_eq!(obj.h0, h0);
     assert_eq!(obj.age, age);
 }

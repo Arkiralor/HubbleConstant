@@ -116,6 +116,10 @@ However, you may send requests for enhancements and improvements to [the origina
 
 For bugfixes, you can create a new Github issue for the repository.
 
+## Documentation
+
+The PostMan documentation for the APIs can be found at ['documenter.getpostman.com'](https://documenter.getpostman.com/view/17779018/2s93sXbuXi).
+
 ## Author Details
 
 For miscellaneous queries or correction requests for the documentation (_including this README_), you may contact the original author via the following channels.

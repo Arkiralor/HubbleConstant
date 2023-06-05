@@ -7,6 +7,79 @@ use serde::Serialize;
 use crate::libs::constants::{DISTANCE_ERROR_MSG, NULL_VEC_ERROR, VELOCITY_ERROR_MSG};
 
 #[derive(Deserialize, Serialize)]
+pub struct IndexSchema {
+    msg: String,
+}
+
+impl IndexSchema {
+    pub fn create(msg: Option<String>) -> Self {
+        let data: String = match msg {
+            Some(val) => val,
+            None => "Hello, World!".to_string(),
+        };
+
+        Self { msg: data }
+    }
+}
+
+#[derive(Deserialize, Serialize)]
+pub struct HubbleRequest {
+    pub file_path: String,
+    pub show: bool,
+}
+
+impl HubbleRequest {
+    pub fn create(file_path: Option<String>, show: Option<bool>) -> Self {
+        let file_path: String = match file_path {
+            Some(val) => val,
+            None => String::from(""),
+        };
+
+        let show: bool = match show {
+            Some(val) => val,
+            None => false,
+        };
+
+        Self { file_path, show }
+    }
+
+    pub fn update(&mut self, file_path: Option<String>, show: Option<bool>) {
+        self.file_path = match file_path {
+            Some(val) => val,
+            None => self.file_path.clone(),
+        };
+
+        self.show = match show {
+            Some(val) => val,
+            None => self.show.clone(),
+        };
+    }
+}
+
+#[derive(Deserialize, Serialize)]
+pub struct AgeRequest {
+    pub h0: f64,
+}
+
+impl AgeRequest {
+    pub fn create(h0: Option<f64>) -> Self {
+        let h0: f64 = match h0 {
+            Some(val) => val,
+            None => 0.0 as f64,
+        };
+
+        Self { h0 }
+    }
+
+    pub fn update(&mut self, h0: Option<f64>) {
+        self.h0 = match h0 {
+            Some(val) => val,
+            None => self.h0.clone(),
+        };
+    }
+}
+
+#[derive(Deserialize, Serialize)]
 /// The struct will hold the information about a single galaxy as defined in `galaxies.json`
 ///
 /// Members:
@@ -162,10 +235,19 @@ impl Output {
         return obj;
     }
 
-    pub fn create(h0: f64, age: f64) -> Output {
+    pub fn create(h0: Option<f64>, age: Option<f64>) -> Output {
         //! Create a new output object from the given data.
-        let obj: Output = Output { h0: h0, age: age };
-        return obj;
+        let h0: f64 = match h0 {
+            Some(val) => val,
+            None => 0.0 as f64,
+        };
+
+        let age: f64 = match age {
+            Some(val) => val,
+            None => 0.0 as f64,
+        };
+
+        Output { h0, age }
     }
 
     pub fn update(&mut self, h0: Option<f64>, age: Option<f64>) {
